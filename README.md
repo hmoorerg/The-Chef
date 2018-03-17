@@ -1,4 +1,4 @@
-This is a website created to test out the framework React
+This is a website using a card layout created to test out the framework React
 
 Follows the principles of responsive web design by changing layout and size depending on display size
 
