@@ -59,7 +59,7 @@ class App extends Component {
 
           <div id="articleStack">          
           
-          <ArticleBox image="https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&auto=compress&cs=tinysrgb" title="What a good project" link="/articles/goodDay" timestamp="Dec 23">
+          <ArticleBox image="https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&auto=compress&cs=tinysrgb" title="What a good project" link="/" timestamp="Dec 23">
             <p>Today, the chef decided to build a website</p>
             <p>The chef enjoyed this</p>
             <p>He stil wanted to work on it though</p>
