@@ -1,4 +1,5 @@
 .App {
+  box-sizing: border-box;
   /*text-align: center;*/
 }
 
@@ -29,6 +30,10 @@
   margin-left:-1em;
 }
 
+.App-title:hover {
+    color:#444;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -57,21 +62,49 @@ img {
   
   text-align: center;
   background-color: #FEFEFE;
-  border-top-width: 10px;
   box-shadow: 2px 2px 5px #999;
   grid-area:nav;
 
   padding:1em;
 
+  display:flex;
+  justify-content:center;
+
+  flex-direction:row;
+
 }
 
-#sidebar hr{
+#sidebar a {
+    display: inline-block;
+}
+
+#sidebar a:hover {
+    color:darkblue;
+
+    transform: scale(1.1);
+}
+
+#sidebar hr {
   width:95%;
+  display:flex;
 }
 
+.navBox {
+    border-bottom : 1px solid black;
+    border-top : 1px solid black;
+    padding:10px;
+    margin-right:2%;
+    margin-bottom : 1%;
+}
 
 
 @media (min-width: 850px){
+  #sidebar {
+      justify-content:flex-start;
+      flex-direction:column;
+  }
+
+
   #mainGrid{
     grid-template-columns: 10vw 3fr;
     grid-template-rows: auto 1fr auto;
@@ -84,16 +117,22 @@ img {
     text-align: left;
     margin-left:0;
   }
+
+  .articleContentSplitter:hover .articleInfo{
+    display: block;
+  }
 }
 
 #articleStack {
   box-sizing: border-box;
   grid-area: content;
   margin:auto;
-  margin-top:0.5em;
-  margin-right: 1.5em;
-  margin-left: 2em;
+  margin-top:1em;
+  margin-right: 1.2em;
+  margin-left: 1.4em;
 }
+
+
 #footer{
   color:#555;
   padding:50px;
@@ -102,17 +141,25 @@ img {
 }
 
 
-.fakePaper {
+.articleBox {
   position:relative;
   box-sizing: border-box;
   background-color: #FFF;
 
   width:100%;
-  padding:1em;
+  padding:1.5em;
   
-  border-top: 10px solid white;
+  border-top: 6px solid white;
 
   box-shadow: 0px 5px 5px #BBB;
+}
+
+.articleBoxBorder {
+  display:block;
+}
+
+.articleBoxBorder + .articleBoxBorder {
+ margin-top:2em;
 }
 
 
@@ -125,7 +172,7 @@ a:visited{
   color:inherit;
 }
 
-.paperTitle{
+.articleBoxTitle{
 
    font-family:'Karma';
    font-size:1.5em;
@@ -142,22 +189,23 @@ a:visited{
   background-size: cover;
 
   
+
   box-shadow: 1px 5px 5px #BBB;
 
   height:18vh;
 }
 
-.paperContentSplitter:hover{
+.articleContentSplitter:hover{
   box-shadow: 0px 5px 2px #AAA;
 }
 
-.paperContentSplitter{
+.articleContentSplitter{
   display:flex;
   flex-direction: column;
 }
 
 @media (min-width: 1100px){
-  .paperContentSplitter{
+  .articleContentSplitter{
     /*flex-direction: row;*/
   }
   .articleImage{
@@ -167,7 +215,8 @@ a:visited{
   }
 }
 
-.paperInfo{
+
+.articleInfo{
   
   float:right;
   color:#BBB;
@@ -182,9 +231,6 @@ a:visited{
 
 }
 
-.paperContentSplitter:hover .paperInfo{
-  display: block;
-}
 
 /*@media (min-width: 1100px){
   .paperInfo {

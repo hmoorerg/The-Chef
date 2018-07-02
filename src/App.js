@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 
 
-class FakePaper extends React.Component {
+class ArticleBox extends React.Component {
   render() {
     return (
-      <a href={this.props.link}>
-        <div class="paperContentSplitter">
+      <a className="articleBoxBorder" href={this.props.link}>
+        <div className="articleContentSplitter">
           {
             this.props.image != null &&
-            <div class="articleImage" style={{backgroundImage:"url("+this.props.image+")"}}/>
+            <div className="articleImage" style={{backgroundImage:"url("+this.props.image+")"}}/>
           }
-          <div className="fakePaper" style={{ borderColor: this.props.accentColor }}>
+          <div className="articleBox" style={{ borderColor: this.props.accentColor }}>
             <div>
-              <strong className="paperTitle" >{this.props.title}</strong>
-              <div className="paperContent">
+              <strong className="articleBoxTitle" >{this.props.title}</strong>
+              <div className="articleBoxContent">
                 {this.props.children}
               </div>
             </div>
-            <p className="paperInfo">
+            <p className="articleInfo">
               {this.props.timestamp}
             </p>
           </div>
@@ -32,41 +31,14 @@ class FakePaper extends React.Component {
 
 }
 
-class Clock extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
-
-  tick() {
-    console.log("tick");
-
-    this.setState({
-      date: new Date()
-    });
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  render() {
-    return (
-      <div>
-        <p>{this.state.date.toLocaleTimeString()}</p>
-      </div>
-    );
-  }
+class NavBox extends React.Component {
+    render(){
+        return (
+            <div className="navBox">
+            <a href={this.props.link}>{this.props.children}</a>
+            </div>
+        )}
 }
-
-
 
 
 class App extends Component {
@@ -76,56 +48,45 @@ class App extends Component {
 
         <div id="mainGrid">
         <header className="App-header">
-          {/*<img src={logo} className="App-logo" alt="logo" />*/}
           <h1 className="App-title"><a href="/">The Chef</a></h1>
-        {/*<Clock />*/}
         </header>
           
-          <div id="sidebar">
-            <hr/>
-            <p><a href="/">Photos</a></p>
-            <hr/>
-            <p><a href="/recipe">Recipes</a></p>
-            <hr/>
-            <p><a href="/stories">Stories</a></p>
-            <hr/>
-
-          </div>
+          <nav id="sidebar">
+            <NavBox link="/">Home</NavBox>
+            <NavBox link="/">Articles</NavBox>
+            <NavBox link="/">Recipes</NavBox>
+          </nav>
 
           <div id="articleStack">          
           
-          <FakePaper image="https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&auto=compress&cs=tinysrgb" accentColor="white" title="What a good project" link="/articles/goodDay" timestamp="Dec 23">
+          <ArticleBox image="https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?w=940&h=650&auto=compress&cs=tinysrgb" title="What a good project" link="/" timestamp="Dec 23">
             <p>Today, the chef decided to build a website</p>
-            <p>This made the chef feel happy</p>
+            <p>The chef enjoyed this</p>
             <p>He stil wanted to work on it though</p>
-          </FakePaper>
+          </ArticleBox>
 
-          <br/>
 
-          <FakePaper title="The chef welcomes you" link="/articles/welcomeNewcomers" image="https://images.pexels.com/photos/710916/pexels-photo-710916.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" timestamp="Jan 2">
+          <ArticleBox title="The chef welcomes you" link="/" image="https://images.pexels.com/photos/710916/pexels-photo-710916.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" timestamp="Jan 2">
           <p>
             The chef is very happy with how popular this website is (probably)
           </p>
-          </FakePaper>
+          </ArticleBox>
 
-          <br/>
-          <FakePaper title="Why did the chef make this website?" link="/articles/howIWasMade" image="https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" timestamp="Feb 9">
+          <ArticleBox title="Why did the chef make this website?" link="/" image="https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" timestamp="Feb 9">
           <p>Nobody will ever know</p>
-          </FakePaper>
-          <br/>
+          </ArticleBox>
           
-          <FakePaper accentColor="darkred" title="This page needs more articles" link="/articles/badBlogger" timestamp="Oct 1">
+          <ArticleBox accentColor="#D00" title="This page needs more articles" link="/" timestamp="Oct 1">
           <p>
             And they are easy to add
           </p>
-          </FakePaper>
-          <br/>
+          </ArticleBox>
 
-          <FakePaper accentColor="darkGreen" title="The chef is hungry" link="/articles/hungryToday" timestamp="Sep 1">
+          <ArticleBox accentColor="#0A0" title="The chef is hungry" link="/" timestamp="Sep 1">
             <p>
               He should get more food.
             </p>
-          </FakePaper>
+          </ArticleBox>
           </div>
           <div id="footer">
             <a>
