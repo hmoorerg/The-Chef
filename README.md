@@ -4,11 +4,11 @@ Follows the principles of responsive web design by changing layout and size depe
 
 
 
-### Desktop Version
+### How it looks on desktop
 ---
 ![Desktop version of website](PHOTOS/Desktop.png)
 
 
-### Mobile Version
+### How it looks on mobile
 ---
 ![Mobile version of website](PHOTOS/Mobile.png)
